@@ -163,7 +163,8 @@ void board::isHit(string arr[][COLS], int row, int col)
 		cout << "              --------\n";
 		cout << endl;
 	}
-	else
+	else if (arr[row][col] == "[F]" || arr[row][col] == "[S]" || arr[row][col] == "[D]" || arr[row][col] == "[B]" || arr[row][col] == "[A]")
+	// Account for whether the "hit" is actually a ship F S D B A
 	{
 		arr[row][col] = "[X]";
 		totalHits++;
@@ -175,7 +176,16 @@ void board::isHit(string arr[][COLS], int row, int col)
 		cout << "              --------\n";
 		cout << endl;
 	}
-
+	else
+	// IF not a miss or a hit on a ship, retry
+	{
+		displayBoard(arr);
+		cout << endl;
+		cout << "   -------------------------------\n";
+		cout << "   | Please enter a valid input. |\n";
+		cout << "   -------------------------------\n";
+		cout << endl;
+	}
 
 }
 
