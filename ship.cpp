@@ -8,7 +8,11 @@ void ship::makeShip(string str, int size)
 
 void ship::placeShip(string arr[][COLS])
 {
+	// to run while loop
 	bool generating = true;
+
+	// to toggle visibility of ships
+	bool displayShips = true;
 
 	while (generating)
 	{
@@ -40,13 +44,23 @@ void ship::placeShip(string arr[][COLS])
 
 			// Fill ship space with letters for step 03 display purposes
 			// *** REMOVE WHEN NO LONGER DISPLAYING THE SHIPS ***
-			char shipLetter = shipClass.at(0);
+			if (displayShips)
+			{
+				char shipLetter = shipClass.at(0);
+				string shipLetStr;
+				shipLetStr = shipLetter;
+				for (int b = 0; b < shipSize; b++)
+				{
+					arr[b + row][col] = "[" + shipLetStr + "]";
+				}
+			}
+			/*char shipLetter = shipClass.at(0);
 			string shipLetStr;
 			shipLetStr = shipLetter;
 			for (int b = 0; b < shipSize; b++)
 			{
 				arr[b + row][col] = "[" + shipLetStr + "]";
-			}
+			}*/
 			break;
 		}
 		else
@@ -69,13 +83,23 @@ void ship::placeShip(string arr[][COLS])
 
 			// Fill ship space with letters for step 03 display purposes
 			// *** REMOVE WHEN NO LONGER DISPLAYING THE SHIPS ***
-			char shipLetter = shipClass.at(0);
+			if (displayShips)
+			{
+				char shipLetter = shipClass.at(0);
+				string shipLetStr;
+				shipLetStr = shipLetter;
+				for (int b = 0; b < shipSize; b++)
+				{
+					arr[row][b + col] = "[" + shipLetStr + "]";
+				}
+			}
+			/*char shipLetter = shipClass.at(0);
 			string shipLetStr;
 			shipLetStr = shipLetter;
 			for (int b = 0; b < shipSize; b++)
 			{
 				arr[row][b + col] = "[" + shipLetStr + "]";
-			}
+			}*/
 			break;
 		}
 
