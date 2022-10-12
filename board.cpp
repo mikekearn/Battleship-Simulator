@@ -38,17 +38,17 @@ void board::displayBoard(string arr[][COLS])
 	cout << endl;
 	cout << endl;
 	cout << "-------------------------------------\n";
-	cout << " ####    #   ##### ##### #     #####\n";
-	cout << " #   #  # #    #     #   #     #\n";
-	cout << " ####  #####   #     #   #     ###\n";
-	cout << " #   # #   #   #     #   #     #\n";
-	cout << " ####  #   #   #     #   ##### #####\n";
-	cout << "\n";
-	cout << "        #### #   # ##### ####\n";
-	cout << "       #     #   #   #   #   #\n";
-	cout << "        ###  #####   #   ####\n";
-	cout << "           # #   #   #   #\n";
-	cout << "       ####  #   # ##### #\n";
+	cout << " ####    #   ##### ##### #     ##### \n";
+	cout << " #   #  # #    #     #   #     #     \n";
+	cout << " ####  #####   #     #   #     ###   \n";
+	cout << " #   # #   #   #     #   #     #     \n";
+	cout << " ####  #   #   #     #   ##### ##### \n";
+	cout << "                                     \n";
+	cout << "        #### #   # ##### ####        \n";
+	cout << "       #     #   #   #   #   #       \n";
+	cout << "        ###  #####   #   ####        \n";
+	cout << "           # #   #   #   #           \n";
+	cout << "       ####  #   # ##### #           \n";
 	cout << "-------------------------------------\n";
 	cout << "|      Welcome to BATTLESHIP        |\n";
 	cout << "-------------------------------------\n";
@@ -270,6 +270,29 @@ void board::keepPlaying(string arr[][COLS])
 {
 	while (keepPlayingBool)
 	{
+		if (totalHits == 17)
+		{
+			keepPlayingBool = false;
+			cout << endl;
+			cout << "   -----------------------------\n";
+			cout << "   | Congratulations, you WIN! |\n";
+			cout << "   | You sank all their ships. |\n";
+			cout << "   -----------------------------\n";
+			cout << endl;
+			break;
+		}
+		else if (totalMisses == 15)
+		{
+			keepPlayingBool = false;
+			cout << endl;
+			cout << "   -------------------------------\n";
+			cout << "   | Oh no, the enemy found you! |\n";
+			cout << "   |    You LOSE, game over!     |\n";
+			cout << "   -------------------------------\n";
+			cout << endl;
+			break;
+		}
+
 		string nextMove;
 
 		cout << "  Please enter a position to\n  fire upon, such as 'A1'\n";
