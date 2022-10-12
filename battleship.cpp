@@ -59,37 +59,7 @@ int main()
 
 	newGame.keepPlaying(gameBoard);
 
-	// cleaning code, moved all to board class
-	// got too big
-	/*bool keepPlaying = true;
-	while (keepPlaying)
-	{
-		string nextMove;
-
-		cout << "  Please enter a position to\n  fire upon, such as 'A1'\n";
-		cout << "  (Or enter -1 to quit)\n";
-		cout << "  Player move: ";
-		cin >> nextMove;
-
-		if (nextMove.length() > 3 || nextMove.length() < 2)
-		{
-			newGame.displayBoard(gameBoard);
-			cout << endl;
-			cout << "  -------------------------------\n";
-			cout << "  | Please enter a valid input. |\n";
-			cout << "  -------------------------------\n";
-			cout << endl;
-			continue;
-		}
-		else if (nextMove == "-1")
-		{
-			keepPlaying = false;
-		}
-		else
-		{
-			newGame.playerMove(gameBoard, nextMove);
-		}
-	}*/
+	// cleaning code, moved all to board class, got too big.
 
 	cout << endl;
 	cout << "Thanks for playing BATTLESHIP.\n";

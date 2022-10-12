@@ -154,16 +154,10 @@ void board::playerMove(string arr[][COLS], string str)
 	isHit(arr, playerRow, playerCol);
 }
 
-// Currently this only checks whether a space is open or not;
-// anything that is open is automatically a miss, otherwise
-// it is a hit. Nothing else is currently tracked.
-
-// ##### ADD #######
-// Validation check for whether or not the move has been made alread
-// Ensure repeated moves don't count as a hit or a miss;
-// Require new move instead.
-// Count hits and misses.
-// Tally ships destroyed?
+// Added checks on whether space is open or not
+// Added checks for repeat hits
+// Added hit and miss counts, and total moves
+// Added ship specific messages for destruction
 void board::isHit(string arr[][COLS], int row, int col)
 {
 	if (arr[row][col] == "[ ]")

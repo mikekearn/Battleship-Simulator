@@ -43,7 +43,7 @@ void ship::placeShip(string arr[][COLS])
 			}
 
 			// Fill ship space with letters for step 03 display purposes
-			// *** REMOVE WHEN NO LONGER DISPLAYING THE SHIPS ***
+			// The displayShips bool will toggle the display
 			if (displayShips)
 			{
 				char shipLetter = shipClass.at(0);
@@ -54,13 +54,6 @@ void ship::placeShip(string arr[][COLS])
 					arr[b + row][col] = "[" + shipLetStr + "]";
 				}
 			}
-			/*char shipLetter = shipClass.at(0);
-			string shipLetStr;
-			shipLetStr = shipLetter;
-			for (int b = 0; b < shipSize; b++)
-			{
-				arr[b + row][col] = "[" + shipLetStr + "]";
-			}*/
 			break;
 		}
 		else
@@ -82,7 +75,7 @@ void ship::placeShip(string arr[][COLS])
 			}
 
 			// Fill ship space with letters for step 03 display purposes
-			// *** REMOVE WHEN NO LONGER DISPLAYING THE SHIPS ***
+			// The displayShips bool will toggle the display
 			if (displayShips)
 			{
 				char shipLetter = shipClass.at(0);
@@ -93,13 +86,6 @@ void ship::placeShip(string arr[][COLS])
 					arr[row][b + col] = "[" + shipLetStr + "]";
 				}
 			}
-			/*char shipLetter = shipClass.at(0);
-			string shipLetStr;
-			shipLetStr = shipLetter;
-			for (int b = 0; b < shipSize; b++)
-			{
-				arr[row][b + col] = "[" + shipLetStr + "]";
-			}*/
 			break;
 		}
 
