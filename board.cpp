@@ -18,6 +18,10 @@ void board::makeBoard(string arr[][COLS])
 void board::displayBoard(string arr[][COLS])
 {
 	// Create fancy header for the game.
+	cout << endl;
+	cout << endl;
+	cout << endl;
+	cout << endl;
 	cout << "-------------------------------------\n";
 	cout << " ####    #   ##### ##### #     #####\n";
 	cout << " #   #  # #    #     #   #     #\n";
@@ -46,6 +50,7 @@ void board::displayBoard(string arr[][COLS])
 	}
 
 	// Scoreboard v1
+	cout << endl;
 	cout << "  Total hits: " << showHits() << endl;
 	cout << "  Total misses: " << showMisses() << endl;
 	cout << "  Total moves played: " << showMoves() << endl;
@@ -73,7 +78,7 @@ void board::playerMove(string arr[][COLS], string str)
 	// pulls characters from string to give as coordinates
 	char playerCharA = toupper(str[0]);
 	char playerCharB = toupper(str[1]);
-	char playerCharC;
+	char playerCharC = NULL;
 	if (str.length() == 3)
 	{
 		playerCharC = toupper(str[2]);
@@ -149,20 +154,26 @@ void board::isHit(string arr[][COLS], int row, int col)
 	if (arr[row][col] == "[ ]")
 	{
 		arr[row][col] = "[O]";
+		totalMisses++;
+		totalMoves++;
 		displayBoard(arr);
 		cout << endl;
 		cout << "              --------\n";
 		cout << "              | MISS |\n";
 		cout << "              --------\n";
+		cout << endl;
 	}
 	else
 	{
 		arr[row][col] = "[X]";
+		totalHits++;
+		totalMoves++;
 		displayBoard(arr);
 		cout << endl;
 		cout << "              --------\n";
 		cout << "              | HIT! |\n";
 		cout << "              --------\n";
+		cout << endl;
 	}
 
 

@@ -12,7 +12,7 @@ private:
 	static const int ROWS = 10;
 	static const int COLS = 10;
 	string shipClass;
-	int shipSize;
+	int shipSize = NULL;
 
 public:
 	void makeShip(string str, int size);

@@ -59,7 +59,7 @@ int main()
 	{
 		string nextMove;
 
-		cout << "  Please enter a position to\nfire upon, such as 'A1'\n";
+		cout << "  Please enter a position to\n  fire upon, such as 'A1'\n";
 		cout << "  (Or enter -1 to quit)\n";
 		cout << "  Player move: ";
 		cin >> nextMove;
