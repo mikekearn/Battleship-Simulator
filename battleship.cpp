@@ -52,22 +52,25 @@ int main()
 
 	bool keepPlaying = true;
 
+	// Display game board to start game.
+	newGame.displayBoard(gameBoard);
+
 	while (keepPlaying)
 	{
-		newGame.displayBoard(gameBoard);
-
 		string nextMove;
 
-		cout << "Please enter a position to\nfire upon, such as 'A1'\n";
-		cout << "(Or enter -1 to quit)\n";
-		cout << "Player move: ";
+		cout << "  Please enter a position to\nfire upon, such as 'A1'\n";
+		cout << "  (Or enter -1 to quit)\n";
+		cout << "  Player move: ";
 		cin >> nextMove;
 
 		if (nextMove.length() > 3 || nextMove.length() < 2)
 		{
-			cout << "-------------------------------\n";
-			cout << "| Please enter a valid input. |\n";
-			cout << "-------------------------------\n";
+			newGame.displayBoard(gameBoard);
+			cout << endl;
+			cout << "  -------------------------------\n";
+			cout << "  | Please enter a valid input. |\n";
+			cout << "  -------------------------------\n";
 			cout << endl;
 			continue;
 		}
@@ -83,6 +86,8 @@ int main()
 
 	cout << endl;
 	cout << "Thanks for playing BATTLESHIP.\n";
+
+	
 
 	return 0;
 }

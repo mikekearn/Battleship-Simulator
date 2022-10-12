@@ -44,18 +44,23 @@ void board::displayBoard(string arr[][COLS])
 
 		cout << endl;
 	}
+
+	// Scoreboard v1
+	cout << "  Total hits: " << showHits() << endl;
+	cout << "  Total misses: " << showMisses() << endl;
+	cout << "  Total moves played: " << showMoves() << endl;
 	
 	// Display ship names and sizes to keep track during testing.
 	bool displaySizes = false;
 	if (displaySizes == true)
 	{
 		cout << endl;
-		cout << "Ship names and sizes:\n";
-		cout << "Frigate: 2\n";
-		cout << "Sub 3\n";
-		cout << "Destroyer 3\n";
-		cout << "Battleship 4\n";
-		cout << "Aircraft Carrier 5\n";
+		cout << "  Ship names and sizes:\n";
+		cout << "  Frigate: 2\n";
+		cout << "  Sub 3\n";
+		cout << "  Destroyer 3\n";
+		cout << "  Battleship 4\n";
+		cout << "  Aircraft Carrier 5\n";
 
 	}
 }
@@ -78,9 +83,11 @@ void board::playerMove(string arr[][COLS], string str)
 	// using ascii values
 	if (playerCharA < 65 || playerCharA > 74)
 	{
-		cout << "-------------------------------\n";
-		cout << "| Please enter a valid input. |\n";
-		cout << "-------------------------------\n";
+		displayBoard(arr);
+		cout << endl;
+		cout << "   -------------------------------\n";
+		cout << "   | Please enter a valid input. |\n";
+		cout << "   -------------------------------\n";
 		cout << endl;
 		return;
 	}
@@ -88,9 +95,11 @@ void board::playerMove(string arr[][COLS], string str)
 	{
 		if (playerCharC != 48)
 		{
-			cout << "-------------------------------\n";
-			cout << "| Please enter a valid input. |\n";
-			cout << "-------------------------------\n";
+			displayBoard(arr);
+			cout << endl;
+			cout << "   -------------------------------\n";
+			cout << "   | Please enter a valid input. |\n";
+			cout << "   -------------------------------\n";
 			cout << endl;
 			return;
 		}
@@ -99,9 +108,11 @@ void board::playerMove(string arr[][COLS], string str)
 	{
 		if (playerCharB < 49 || playerCharB > 57)
 		{
-			cout << "-------------------------------\n";
-			cout << "| Please enter a valid input. |\n";
-			cout << "-------------------------------\n";
+			displayBoard(arr);
+			cout << endl;
+			cout << "   -------------------------------\n";
+			cout << "   | Please enter a valid input. |\n";
+			cout << "   -------------------------------\n";
 			cout << endl;
 			return;
 		}
@@ -138,15 +149,35 @@ void board::isHit(string arr[][COLS], int row, int col)
 	if (arr[row][col] == "[ ]")
 	{
 		arr[row][col] = "[O]";
-		cout << "--------\n";
-		cout << "| MISS |\n";
-		cout << "--------\n";
+		displayBoard(arr);
+		cout << endl;
+		cout << "              --------\n";
+		cout << "              | MISS |\n";
+		cout << "              --------\n";
 	}
 	else
 	{
 		arr[row][col] = "[X]";
-		cout << "--------\n";
-		cout << "| HIT! |\n";
-		cout << "--------\n";
+		displayBoard(arr);
+		cout << endl;
+		cout << "              --------\n";
+		cout << "              | HIT! |\n";
+		cout << "              --------\n";
 	}
+
+
+}
+
+int board::showHits()
+{
+	return totalHits;
+}
+
+int board::showMisses()
+{
+	return totalMisses;
+}
+int board::showMoves()
+{
+	return totalMoves;
 }
