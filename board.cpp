@@ -2,6 +2,21 @@
 
 using namespace std;
 
+void board::gameSummary()
+{
+	cout << endl;
+	cout << "-------------------------------------\n";
+	cout << " Enter coordinates to try to HIT the\n";
+	cout << " locations of enemy ships. Destroy\n";
+	cout << " all enemy ships and you win! But if\n";
+	cout << " you MISS 15 times, the enemy will\n";
+	cout << " find your location and you lose.\n";
+	cout << endl;
+	cout << " Ready to play?\n";
+	cout << "-------------------------------------\n";
+	cout << endl;
+}
+
 void board::makeBoard(string arr[][COLS])
 {
 	// fill board with '[ ]'
@@ -35,7 +50,7 @@ void board::displayBoard(string arr[][COLS])
 	cout << "           # #   #   #   #\n";
 	cout << "       ####  #   # ##### #\n";
 	cout << "-------------------------------------\n";
-	cout << "       Welcome to BATTLESHIP \n";
+	cout << "|      Welcome to BATTLESHIP        |\n";
 	cout << "-------------------------------------\n";
 	cout << "     1  2  3  4  5  6  7  8  9  10\n";
 	for (int x = 0; x < ROWS; x++)
@@ -164,17 +179,84 @@ void board::isHit(string arr[][COLS], int row, int col)
 		cout << endl;
 	}
 	else if (arr[row][col] == "[F]" || arr[row][col] == "[S]" || arr[row][col] == "[D]" || arr[row][col] == "[B]" || arr[row][col] == "[A]")
-	// Account for whether the "hit" is actually a ship F S D B A
+	// Account for whether the "hit" is actually a ship F S D B A for
+	// Frigate, Sub, Destroyer, Battleship, and Aircraft Carrier
 	{
+		// Indicate a hit
 		arr[row][col] = "[X]";
+		// Count ship specific hits
+		if (arr[row][col] == "[F]")
+		{
+			frigateHits++;
+		}
+		else if (arr[row][col] == "[S]")
+		{
+			subHits++;
+		}
+		else if (arr[row][col] == "[D]")
+		{
+			destroyerHits++;
+		}
+		else if (arr[row][col] == "[B]")
+		{
+			battleshipHits++;
+		}
+		else if (arr[row][col] == "[A]")
+		{
+			aircraftCarrierHits++;
+		}
+		// count total hits and total moves
 		totalHits++;
 		totalMoves++;
+
+		// display the game board again with any specific messages
 		displayBoard(arr);
 		cout << endl;
 		cout << "              --------\n";
 		cout << "              | HIT! |\n";
 		cout << "              --------\n";
 		cout << endl;
+
+		// Speific messages for sinking Frigate 2, Sub 3, Destroyer 3, Battleship 4, and Aircraft Carrier 5
+		if (frigateHits == 2)
+		{
+			cout << "    ---------------------------\n";
+			cout << "    | You sank their Frigate! |\n";
+			cout << "    ---------------------------\n";
+			cout << endl;
+			frigateHits++;
+		}
+		else if (subHits == 3)
+		{	
+			cout << "      -----------------------\n";
+			cout << "      | You sank their Sub! |\n";
+			cout << "      -----------------------\n";
+			cout << endl;
+			subHits++;
+		}
+		else if (destroyerHits == 3)
+		{
+			cout << "   -----------------------------\n";
+			cout << "   | You sank their Destroyer! |\n";
+			cout << "   -----------------------------\n";
+			cout << endl;
+			destroyerHits++;
+		}
+		else if (battleshipHits == 4)
+		{
+			cout << "   ------------------------------\n";
+			cout << "   | You sank their Battleship! |\n";
+			cout << "   ------------------------------\n";
+			cout << endl;
+			battleshipHits++;
+		}if (aircraftCarrierHits == 5)
+		{
+			cout << "------------------------------------\n";
+			cout << "| You sank their Aircraft Carrier! |\n";
+			cout << "------------------------------------\n";
+			cout << endl;
+			aircraftCarrierHits++;
+		}
 	}
 	else
 	// IF not a miss or a hit on a ship, retry

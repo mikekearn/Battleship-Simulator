@@ -55,6 +55,9 @@ int main()
 	// Display game board to start game.
 	newGame.displayBoard(gameBoard);
 
+	// Display the rules first round.
+	newGame.gameSummary();
+
 	while (keepPlaying)
 	{
 		string nextMove;
