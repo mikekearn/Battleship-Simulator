@@ -50,7 +50,6 @@ int main()
 	battleship.placeShip(gameBoard);
 	aircraftCarrier.placeShip(gameBoard);
 
-	bool keepPlaying = true;
 
 	// Display game board to start game.
 	newGame.displayBoard(gameBoard);
@@ -58,6 +57,11 @@ int main()
 	// Display the rules first round.
 	newGame.gameSummary();
 
+	newGame.keepPlaying(gameBoard);
+
+	// cleaning code, moved all to board class
+	// got too big
+	/*bool keepPlaying = true;
 	while (keepPlaying)
 	{
 		string nextMove;
@@ -85,7 +89,7 @@ int main()
 		{
 			newGame.playerMove(gameBoard, nextMove);
 		}
-	}
+	}*/
 
 	cout << endl;
 	cout << "Thanks for playing BATTLESHIP.\n";

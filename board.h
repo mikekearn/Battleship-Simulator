@@ -25,15 +25,22 @@ private:
 	int destroyerHits = 0;
 	int battleshipHits = 0;
 	int aircraftCarrierHits = 0;
-
-
+	// Used for main gameplay loop
+	bool keepPlayingBool = true;
 
 public:
+	// display summary at start of game
 	void gameSummary();
+	// creat the game board
 	void makeBoard(string arr[][COLS]);
+	// display the game board when needed
 	void displayBoard(string arr[][COLS]);
+	// handle player moves
 	void playerMove(string arr[][COLS], string str);
+	// calculate hits or misses
 	void isHit(string arr[][COLS], int row, int col);
+	// main gameplay loop
+	void keepPlaying(string arr[][COLS]);
 	int showHits();
 	int showMisses();
 	int showMoves();

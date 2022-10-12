@@ -182,8 +182,6 @@ void board::isHit(string arr[][COLS], int row, int col)
 	// Account for whether the "hit" is actually a ship F S D B A for
 	// Frigate, Sub, Destroyer, Battleship, and Aircraft Carrier
 	{
-		// Indicate a hit
-		arr[row][col] = "[X]";
 		// Count ship specific hits
 		if (arr[row][col] == "[F]")
 		{
@@ -205,6 +203,9 @@ void board::isHit(string arr[][COLS], int row, int col)
 		{
 			aircraftCarrierHits++;
 		}
+		// After counting, indicate a hit
+		arr[row][col] = "[X]";
+
 		// count total hits and total moves
 		totalHits++;
 		totalMoves++;
@@ -270,6 +271,39 @@ void board::isHit(string arr[][COLS], int row, int col)
 	}
 
 }
+
+void board::keepPlaying(string arr[][COLS])
+{
+	while (keepPlayingBool)
+	{
+		string nextMove;
+
+		cout << "  Please enter a position to\n  fire upon, such as 'A1'\n";
+		cout << "  (Or enter -1 to quit)\n";
+		cout << "  Player move: ";
+		cin >> nextMove;
+
+		if (nextMove.length() > 3 || nextMove.length() < 2)
+		{
+			displayBoard(arr);
+			cout << endl;
+			cout << "  -------------------------------\n";
+			cout << "  | Please enter a valid input. |\n";
+			cout << "  -------------------------------\n";
+			cout << endl;
+			continue;
+		}
+		else if (nextMove == "-1")
+		{
+			keepPlayingBool = false;
+		}
+		else
+		{
+			playerMove(arr, nextMove);
+		}
+	}
+}
+
 
 int board::showHits()
 {
