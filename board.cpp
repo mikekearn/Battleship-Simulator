@@ -358,7 +358,7 @@ void board::keepPlaying(string arr[][COLS])
 			cout << "     -------------------------------\n";
 			cout << "     | Please enter a valid input. |\n";
 			cout << "     -------------------------------\n";
-			cout << endl;
+			//cout << endl;
 			continue;
 		}
 		else if (nextMove == "-1")
