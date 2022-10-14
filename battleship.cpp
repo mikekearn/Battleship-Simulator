@@ -18,7 +18,7 @@ int main()
 	static const int COLS = 10;
 
 	// 2d array for game board
-	string gameBoard[ROWS][COLS];
+	string gameBoard[COLS][ROWS];
 
 	bool playAgain = false;
 	do
@@ -56,10 +56,16 @@ int main()
 
 
 		// Display game board to start game.
-		newGame.displayBoard(gameBoard);
+		// newGame.displayBoard(gameBoard);
+		// Wait to display game board
 
+		// Display header and rules first.
+		newGame.displayHeader();
 		// Display the rules first round.
 		newGame.gameSummary();
+
+		// Display game board here instead of above:
+		newGame.displayBoard(gameBoard);
 
 		// continue game
 		newGame.keepPlaying(gameBoard);
@@ -67,16 +73,27 @@ int main()
 		string yesOrNo;
 		cout << endl;
 		cout << endl;
-		cout << "Would you like to play again? (Y/N): ";
-		cin >> yesOrNo;
+		bool yesOrNoLoop = true;
+		while (yesOrNoLoop)
+		{
+			cout << "   Would you like to play again? (Y/N): ";
+			cin >> yesOrNo;
 
-		if (yesOrNo == "Y" || yesOrNo == "y")
-		{
-			playAgain = true;
-		}
-		else
-		{
-			break;
+			if (yesOrNo == "Y" || yesOrNo == "y")
+			{
+				playAgain = true;
+				yesOrNoLoop = false;
+			}
+			else if (yesOrNo == "N" || yesOrNo == "n")
+			{
+				yesOrNoLoop = false;
+				playAgain = false;
+				break;
+			}
+			else
+			{
+				cout << "   Please enter valid input.\n";
+			}
 		}
 
 	} while (playAgain);
@@ -84,7 +101,9 @@ int main()
 	// cleaning code, moved all to board class, got too big.
 
 	cout << endl;
-	cout << "  Thanks for playing BATTLESHIP.\n";
+	cout << "     ---------------------------------\n";
+	cout << "     | Thanks for playing BATTLESHIP |\n";
+	cout << "     ---------------------------------\n";
 
 	
 

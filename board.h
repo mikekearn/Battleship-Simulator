@@ -27,20 +27,23 @@ private:
 	int aircraftCarrierHits = 0;
 	// Used for main gameplay loop
 	bool keepPlayingBool = true;
+	bool firstLoop = true;
 
 public:
 	// display summary at start of game
 	void gameSummary();
-	// creat the game board
-	void makeBoard(string arr[][COLS]);
+	// split header into new function
+	void displayHeader();
+	// create the game board
+	void makeBoard(string arr[][ROWS]);
 	// display the game board when needed
-	void displayBoard(string arr[][COLS]);
+	void displayBoard(string arr[][ROWS]);
 	// handle player moves
-	void playerMove(string arr[][COLS], string str);
+	void playerMove(string arr[][ROWS], string str);
 	// calculate hits or misses
-	void isHit(string arr[][COLS], int row, int col);
+	void isHit(string arr[][ROWS], int row, int col);
 	// main gameplay loop
-	void keepPlaying(string arr[][COLS]);
+	void keepPlaying(string arr[][ROWS]);
 	int showHits();
 	int showMisses();
 	int showMoves();
