@@ -346,7 +346,8 @@ void board::keepPlaying(string arr[][COLS])
 		string nextMove;
 
 		cout << endl;
-		cout << "      Please enter a position to\n      fire upon, such as 'A1'\n";
+		cout << "      Please enter a position to\n";
+		cout << "      fire upon, such as 'A1'\n";
 		cout << "      (Or enter -1 to quit)\n";
 		cout << "      Player move: ";
 		cin >> nextMove;

@@ -27,6 +27,7 @@ private:
 	int aircraftCarrierHits = 0;
 	// Used for main gameplay loop
 	bool keepPlayingBool = true;
+	// Used to show summary only at first loop
 	bool firstLoop = true;
 
 public:
