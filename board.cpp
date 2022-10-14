@@ -52,10 +52,21 @@ void board::displayBoard(string arr[][COLS])
 	cout << "-------------------------------------\n";
 	cout << "|      Welcome to BATTLESHIP        |\n";
 	cout << "-------------------------------------\n";
-	cout << "     1  2  3  4  5  6  7  8  9  10\n";
+	//cout << "     1  2  3  4  5  6  7  8  9  10\n";
+	// Must swap numbers and letters.
+	cout << "     A  B  C  D  E  F  G  H  I  J \n";
 	for (int x = 0; x < ROWS; x++)
 	{
-		cout << "  " << (char(x + 65)) << " ";
+		//cout << "  " << (char(x + 65)) << " ";
+		// Swapping letters for numbers below
+		// Must add additional code to account for
+		// the 10 being 2 digits wide
+		if (x < 9)
+		{
+			cout << " " << (x + 1) << "  ";
+		}
+		else
+			cout << " " << (x + 1) << " ";
 		for (int y = 0; y < COLS; y++)
 		{
 			cout << arr[x][y];
@@ -66,10 +77,14 @@ void board::displayBoard(string arr[][COLS])
 
 	// Scoreboard v1
 	cout << endl;
-	cout << "  Total hits: " << showHits() << endl;
-	cout << "  Total misses: " << showMisses() << endl;
-	cout << "  Total moves played: " << showMoves() << endl;
+	// cout << "  Total hits: " << showHits() << endl;
+	// Don't need total his
 	
+	cout << "  Total consecutive misses: " << showMisses() << endl;
+	// ADDED: CONSECUTIVE misses
+	cout << "  Total moves played: " << showMoves() << endl;
+	// Leaving in for now, seems useful maybe?
+
 	// Display ship names and sizes to keep track during testing.
 	bool displaySizes = false;
 	if (displaySizes == true)
@@ -151,18 +166,21 @@ void board::playerMove(string arr[][COLS], string str)
 
 	cout << endl;
 
-	isHit(arr, playerRow, playerCol);
+	isHit(arr, playerCol, playerRow);
 }
 
 // Added checks on whether space is open or not
 // Added checks for repeat hits
 // Added hit and miss counts, and total moves
 // Added ship specific messages for destruction
-void board::isHit(string arr[][COLS], int row, int col)
+
+// ~~~~Swapped all references of 'row' and 'col' after swapping
+// ~~~~letter and number columns and rows.
+void board::isHit(string arr[][COLS], int col, int row)
 {
-	if (arr[row][col] == "[ ]")
+	if (arr[col][row] == "[ ]")
 	{
-		arr[row][col] = "[O]";
+		arr[col][row] = "[O]";
 		totalMisses++;
 		totalMoves++;
 		displayBoard(arr);
@@ -172,39 +190,42 @@ void board::isHit(string arr[][COLS], int row, int col)
 		cout << "              --------\n";
 		cout << endl;
 	}
-	else if (arr[row][col] == "[F]" || arr[row][col] == "[S]" || arr[row][col] == "[D]" || arr[row][col] == "[B]" || arr[row][col] == "[A]")
+	else if (arr[col][row] == "[F]" || arr[col][row] == "[S]" || arr[col][row] == "[D]" || arr[col][row] == "[B]" || arr[col][row] == "[A]")
 	// Account for whether the "hit" is actually a ship F S D B A for
 	// Frigate, Sub, Destroyer, Battleship, and Aircraft Carrier
 	{
 		// Count ship specific hits
-		if (arr[row][col] == "[F]")
+		if (arr[col][row] == "[F]")
 		{
 			frigateHits++;
 		}
-		else if (arr[row][col] == "[S]")
+		else if (arr[col][row] == "[S]")
 		{
 			subHits++;
 		}
-		else if (arr[row][col] == "[D]")
+		else if (arr[col][row] == "[D]")
 		{
 			destroyerHits++;
 		}
-		else if (arr[row][col] == "[B]")
+		else if (arr[col][row] == "[B]")
 		{
 			battleshipHits++;
 		}
-		else if (arr[row][col] == "[A]")
+		else if (arr[col][row] == "[A]")
 		{
 			aircraftCarrierHits++;
 		}
 		// After counting, indicate a hit
-		arr[row][col] = "[X]";
+		arr[col][row] = "[X]";
 
 		// count total hits and total moves
 		totalHits++;
 		totalMoves++;
 
 		// display the game board again with any specific messages
+		// ADDED: Reset miss counter - 15 CONSECUTIVE misses
+		//        equals a loss, not 15 TOTAL misses
+		totalMisses = 0;
 		displayBoard(arr);
 		cout << endl;
 		cout << "              --------\n";
