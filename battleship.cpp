@@ -71,12 +71,14 @@ int main()
 		newGame.keepPlaying(gameBoard);
 
 		string yesOrNo;
-		cout << endl;
+		//cout << endl;
 		cout << endl;
 		bool yesOrNoLoop = true;
 		while (yesOrNoLoop)
 		{
-			cout << "   Would you like to play again? (Y/N): ";
+			//cout << "   -------------------------------------\n";
+			cout << "         Would you like to play\n";
+			cout << "          again ? (Y / N) : ";
 			cin >> yesOrNo;
 
 			if (yesOrNo == "Y" || yesOrNo == "y")

@@ -81,7 +81,7 @@ void board::displayBoard(string arr[][ROWS])
 
 	//cout << "     1  2  3  4  5  6  7  8  9  10\n";
 	// Must swap numbers and letters.
-	cout << "        A  B  C  D  E  F  G  H  I  J \n";
+	cout << "         A  B  C  D  E  F  G  H  I  J \n";
 	for (int x = 0; x < COLS; x++)
 	{
 		//cout << "  " << (char(x + 65)) << " ";
@@ -90,10 +90,10 @@ void board::displayBoard(string arr[][ROWS])
 		// the 10 being 2 digits wide
 		if (x < 9)
 		{
-			cout << "    " << (x + 1) << "  ";
+			cout << "     " << (x + 1) << "  ";
 		}
 		else
-			cout << "    " << (x + 1) << " ";
+			cout << "     " << (x + 1) << " ";
 		for (int y = 0; y < ROWS; y++)
 		{
 			cout << arr[x][y];
@@ -104,12 +104,12 @@ void board::displayBoard(string arr[][ROWS])
 
 	// Scoreboard v1
 	cout << endl;
-	// cout << "  Total hits: " << showHits() << endl;
+	// cout << "      Total hits: " << showHits() << endl;
 	// Don't need total his
 	
-	cout << "     Total consecutive misses: " << showMisses() << endl;
+	cout << "      Total consecutive misses: " << showMisses() << endl;
 	// ADDED: CONSECUTIVE misses
-	cout << "     Total moves played: " << showMoves() << endl;
+	cout << "      Total moves played: " << showMoves() << endl;
 	// Leaving in for now, seems useful maybe?
 
 	// Display ship names and sizes to keep track during testing.
@@ -117,12 +117,12 @@ void board::displayBoard(string arr[][ROWS])
 	if (displaySizes == true)
 	{
 		cout << endl;
-		cout << "     Ship names and sizes:\n";
-		cout << "     Frigate: 2\n";
-		cout << "     Sub 3\n";
-		cout << "     Destroyer 3\n";
-		cout << "     Battleship 4\n";
-		cout << "     Aircraft Carrier 5\n";
+		cout << "      Ship names and sizes:\n";
+		cout << "      Frigate: 2\n";
+		cout << "      Sub 3\n";
+		cout << "      Destroyer 3\n";
+		cout << "      Battleship 4\n";
+		cout << "      Aircraft Carrier 5\n";
 
 	}
 }
@@ -346,9 +346,9 @@ void board::keepPlaying(string arr[][COLS])
 		string nextMove;
 
 		cout << endl;
-		cout << "     Please enter a position to\n     fire upon, such as 'A1'\n";
-		cout << "     (Or enter -1 to quit)\n";
-		cout << "     Player move: ";
+		cout << "      Please enter a position to\n      fire upon, such as 'A1'\n";
+		cout << "      (Or enter -1 to quit)\n";
+		cout << "      Player move: ";
 		cin >> nextMove;
 
 		if (nextMove.length() > 3 || nextMove.length() < 2)
