@@ -215,7 +215,7 @@ void board::isHit(string arr[][COLS], int col, int row)
 		cout << "                 --------\n";
 		cout << "                 | MISS |\n";
 		cout << "                 --------\n";
-		cout << endl;
+		//cout << endl;
 	}
 	else if (arr[col][row] == "[F]" || arr[col][row] == "[S]" || arr[col][row] == "[D]" || arr[col][row] == "[B]" || arr[col][row] == "[A]")
 	// Account for whether the "hit" is actually a ship F S D B A for
@@ -258,7 +258,7 @@ void board::isHit(string arr[][COLS], int col, int row)
 		cout << "                 --------\n";
 		cout << "                 | HIT! |\n";
 		cout << "                 --------\n";
-		cout << endl;
+		//cout << endl;
 
 		// Speific messages for sinking Frigate 2, Sub 3, Destroyer 3, Battleship 4, and Aircraft Carrier 5
 		if (frigateHits == 2)
@@ -266,7 +266,7 @@ void board::isHit(string arr[][COLS], int col, int row)
 			cout << "       ---------------------------\n";
 			cout << "       | You sank their Frigate! |\n";
 			cout << "       ---------------------------\n";
-			cout << endl;
+			//cout << endl;
 			frigateHits++;
 		}
 		else if (subHits == 3)
@@ -274,7 +274,7 @@ void board::isHit(string arr[][COLS], int col, int row)
 			cout << "         -----------------------\n";
 			cout << "         | You sank their Sub! |\n";
 			cout << "         -----------------------\n";
-			cout << endl;
+			//cout << endl;
 			subHits++;
 		}
 		else if (destroyerHits == 3)
@@ -282,7 +282,7 @@ void board::isHit(string arr[][COLS], int col, int row)
 			cout << "      -----------------------------\n";
 			cout << "      | You sank their Destroyer! |\n";
 			cout << "      -----------------------------\n";
-			cout << endl;
+			//cout << endl;
 			destroyerHits++;
 		}
 		else if (battleshipHits == 4)
@@ -290,14 +290,14 @@ void board::isHit(string arr[][COLS], int col, int row)
 			cout << "      ------------------------------\n";
 			cout << "      | You sank their Battleship! |\n";
 			cout << "      ------------------------------\n";
-			cout << endl;
+			//cout << endl;
 			battleshipHits++;
 		}if (aircraftCarrierHits == 5)
 		{
 			cout << "   ------------------------------------\n";
 			cout << "   | You sank their Aircraft Carrier! |\n";
 			cout << "   ------------------------------------\n";
-			cout << endl;
+			//cout << endl;
 			aircraftCarrierHits++;
 		}
 	}
@@ -309,7 +309,7 @@ void board::isHit(string arr[][COLS], int col, int row)
 		cout << "      -------------------------------\n";
 		cout << "      | Please enter a valid input. |\n";
 		cout << "      -------------------------------\n";
-		cout << endl;
+		//cout << endl;
 	}
 
 }
@@ -327,7 +327,7 @@ void board::keepPlaying(string arr[][COLS])
 			cout << "      | Congratulations, you WIN! |\n";
 			cout << "      | You sank all their ships. |\n";
 			cout << "      -----------------------------\n";
-			cout << endl;
+			//cout << endl;
 			break;
 		}
 		else if (totalMisses == 15)
@@ -339,12 +339,13 @@ void board::keepPlaying(string arr[][COLS])
 			cout << "      | Oh no, the enemy found you! |\n";
 			cout << "      |    You LOSE, game over!     |\n";
 			cout << "      -------------------------------\n";
-			cout << endl;
+			//cout << endl;
 			break;
 		}
 
 		string nextMove;
 
+		cout << endl;
 		cout << "     Please enter a position to\n     fire upon, such as 'A1'\n";
 		cout << "     (Or enter -1 to quit)\n";
 		cout << "     Player move: ";
